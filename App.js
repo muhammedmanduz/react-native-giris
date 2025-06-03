@@ -1,28 +1,29 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const alertMe = () => {
+    Alert.alert("Dikkat", "Silme işlemini onaylıyor musunuz?", [
+      {
+        text: "İptal",
+        onPress: () => alert("İptal edildi"),
+        style: "cancel",
+      },
+      {
+        text: "Tamam",
+        onPress: () => alert("Silindi"),
+      },
+    ]);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      {/* local den resim yükleme  */}
-      <Image
-        style={{ width: 200, height: 200 }}
-        source={require("./assets/hepsiburada.jpeg")}
-      />
-      {/* internetten resim yükleme  */}
-      <Image
-        style={{ width: 200, height: 200 }}
-        source={{
-          uri: "https://reactnative.dev/img/tiny_logo.png",
-        }}
-      />
+      <Button onPress={alertMe} title="Press Me" />
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
