@@ -1,23 +1,24 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   const [count, setCount] = useState(0);
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-
-      <Button
-        onPress={() => setCount((prevCount) => prevCount + 1)}
-        title="Increase"
-        color="red"
+      {/* local den resim yükleme  */}
+      <Image
+        style={{ width: 200, height: 200 }}
+        source={require("./assets/hepsiburada.jpeg")}
       />
-      <Button
-        onPress={() => setCount((prevCount) => prevCount - 1)}
-        title="Decrease"
+      {/* internetten resim yükleme  */}
+      <Image
+        style={{ width: 200, height: 200 }}
+        source={{
+          uri: "https://reactnative.dev/img/tiny_logo.png",
+        }}
       />
-      <Text style={styles.textStyle}>Count: {count}</Text>
     </View>
   );
 }
