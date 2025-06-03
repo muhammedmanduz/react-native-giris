@@ -3,48 +3,31 @@ import { useState } from "react";
 import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-  const alertMe = () => {
-    Alert.alert("Dikkat", "Silme işlemini onaylıyor musunuz?", [
-      {
-        text: "İptal",
-        onPress: () => alert("İptal edildi"),
-        style: "cancel",
-      },
-      {
-        text: "Tamam",
-        onPress: () => alert("Silindi"),
-      },
-    ]);
-  };
+  const [flag, setFlag] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.box}>
+      <Text style={[styles.bold, { color: flag ? "green" : "red" }]}>
+        Muhammed Manduz
+      </Text>
+      <Text style={[styles.bold, { color: "red", fontSize: 40 }]}>
+        Murat Manduz
+      </Text>
+
       <StatusBar style="auto" />
-      <Button onPress={alertMe} title="Press Me" />
     </View>
   );
 }
 const styles = StyleSheet.create({
-  container: {
+  box: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    gap: 20,
   },
-  subContainer: {
-    borderWidth: 2,
-    borderColor: "blue",
-    width: "60%",
-    alignItems: "center",
-    justifyContent: "center",
-    alignItems: "center",
-    height: 200,
-    borderRadius: 20,
-  },
-  textStyle: {
-    color: "red",
-    fontSize: 20,
+  bold: {
     fontWeight: "bold",
+    fontSize: 20,
+    color: "blue",
   },
 });
