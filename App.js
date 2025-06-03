@@ -1,15 +1,23 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
+  const [count, setCount] = useState(0);
   return (
     <View style={styles.container}>
-      <Text>Merhaba native</Text>
       <StatusBar style="auto" />
 
-      <View style={styles.subContainer}>
-        <Text> Text Text</Text>
-      </View>
+      <Button
+        onPress={() => setCount((prevCount) => prevCount + 1)}
+        title="Increase"
+        color="red"
+      />
+      <Button
+        onPress={() => setCount((prevCount) => prevCount - 1)}
+        title="Decrease"
+      />
+      <Text style={styles.textStyle}>Count: {count}</Text>
     </View>
   );
 }
@@ -20,10 +28,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    gap: 20,
   },
   subContainer: {
-    backgroundColor: "black",
-    width: 100,
-    height: 100,
+    borderWidth: 2,
+    borderColor: "blue",
+    width: "60%",
+    alignItems: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 200,
+    borderRadius: 20,
+  },
+  textStyle: {
+    color: "red",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
