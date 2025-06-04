@@ -1,18 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
+import Foo from "./components/Foo/Foo";
 
 export default function App() {
   const [flag, setFlag] = useState(false);
 
   return (
     <View style={styles.box}>
-      <Text style={[styles.bold, { color: flag ? "green" : "red" }]}>
-        Muhammed Manduz
-      </Text>
-      <Text style={[styles.bold, { color: "red", fontSize: 40 }]}>
-        Murat Manduz
-      </Text>
+      <Foo />
 
       <StatusBar style="auto" />
     </View>
